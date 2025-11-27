@@ -1,0 +1,78 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+.env
+.venv
+venv/
+ENV/
+env/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs
+*.log
+logs/
+*.out
+
+# Cache
+.cache/
+*.sqlite
+*.db
+.DS_Store
+
+# -------------------------
+# Spark
+# -------------------------
+spark-warehouse/
+derby.log
+metastore_db/
+*.crc
+*.snappy
+*.parquet
+*.orc
+
+# -------------------------
+# Airflow
+# -------------------------
+airflow/airflow.db
+airflow/airflow.sqlite
+airflow/logs/
+airflow/tmp/
+airflow/dags/__pycache__/
+
+# Local Airflow config files
+airflow/airflow.cfg
+airflow/webserver_config.py
+
+# -------------------------
+# Packages / Dependencies
+# -------------------------
+*.whl
+dist/
+build/
+
+# -------------------------
+# Docker
+# -------------------------
+*.pid
+*.pid.lock
+
+# -------------------------
+# Project-specific
+# -------------------------
+last_ts.json
+*.yaml
+*.yml
+
+# Environment secrets
+*.env
+.env.*
+.secrets/
