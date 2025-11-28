@@ -5,23 +5,22 @@ CREATE DATABASE IF NOT EXISTS ads_analytics;
 USE ads_analytics;
 
 -- ========================================================
--- RAW TABLE
+-- DROP OLD TABLES
 -- ========================================================
-
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS campaign_summary;
-DROP TABLE IF EXISTS campaign_summary_stage;
 DROP TABLE IF EXISTS publisher_summary;
-DROP TABLE IF EXISTS publisher_summary_stage;
 DROP TABLE IF EXISTS industry_summary;
-DROP TABLE IF EXISTS industry_summary_stage;
 DROP TABLE IF EXISTS hourly_stats;
-DROP TABLE IF EXISTS hourly_stats_stage;
 DROP TABLE IF EXISTS daily_stats;
-DROP TABLE IF EXISTS daily_stats_stage;
 
+
+
+-- ========================================================
+-- RAW EVENTS TABLE (NO PRIMARY KEY!)
+-- ========================================================
 CREATE TABLE events (
-    event_id CHAR(36) PRIMARY KEY,
+    event_id CHAR(36),
     ts DATETIME,
     publisher_id INT,
     publisher_name VARCHAR(200),
@@ -47,27 +46,24 @@ CREATE TABLE events (
 );
 
 -- ========================================================
--- CAMPAIGN SUMMARY
+-- FINAL TABLES (WITH PRIMARY KEY)
 -- ========================================================
+
+-- CAMPAIGN SUMMARY
 CREATE TABLE campaign_summary (
-    campaign_id INT,
+    campaign_id INT PRIMARY KEY,
     total_impressions INT,
     total_clicks INT,
     total_applies INT,
     avg_ctr DOUBLE,
     avg_cpc DOUBLE,
     avg_cpa DOUBLE,
-    avg_roi DOUBLE,
-    PRIMARY KEY (campaign_id)
+    avg_roi DOUBLE
 );
 
-CREATE TABLE campaign_summary_stage LIKE campaign_summary;
-
--- ========================================================
 -- PUBLISHER SUMMARY
--- ========================================================
 CREATE TABLE publisher_summary (
-    publisher_id INT,
+    publisher_id INT PRIMARY KEY,
     publisher_name VARCHAR(200),
     total_impressions INT,
     total_clicks INT,
@@ -76,46 +72,29 @@ CREATE TABLE publisher_summary (
     avg_ctr DOUBLE,
     avg_cpc DOUBLE,
     avg_cpa DOUBLE,
-    avg_roi DOUBLE,
-    PRIMARY KEY (publisher_id)
+    avg_roi DOUBLE
 );
 
-CREATE TABLE publisher_summary_stage LIKE publisher_summary;
-
--- ========================================================
 -- INDUSTRY SUMMARY
--- ========================================================
 CREATE TABLE industry_summary (
-    industry VARCHAR(200),
+    industry VARCHAR(200) PRIMARY KEY,
     clicks INT,
     applications INT,
-    quality DOUBLE,
-    PRIMARY KEY (industry)
+    quality DOUBLE
 );
 
-CREATE TABLE industry_summary_stage LIKE industry_summary;
-
--- ========================================================
--- HOURLY STATS
--- ========================================================
+-- HOURLY
 CREATE TABLE hourly_stats (
-    hour INT,
+    hour INT PRIMARY KEY,
     impressions INT,
     clicks INT,
-    applies INT,
-    PRIMARY KEY (hour)
+    applies INT
 );
 
-CREATE TABLE hourly_stats_stage LIKE hourly_stats;
-
--- ========================================================
--- DAILY STATS
--- ========================================================
+-- DAILY
 CREATE TABLE daily_stats (
-    day_of_week INT,
+    day_of_week INT PRIMARY KEY,
     clicks INT,
-    applies INT,
-    PRIMARY KEY (day_of_week)
+    applies INT
 );
 
-CREATE TABLE daily_stats_stage LIKE daily_stats;
