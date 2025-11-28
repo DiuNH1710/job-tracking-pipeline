@@ -144,7 +144,7 @@ default_args = {
 dag = DAG(
     'job_ads_etl',
     default_args=default_args,
-    schedule='@hourly',
+    schedule=None,
     catchup=False
 )
 
