@@ -291,4 +291,10 @@ Fill in:
 - Password	123456
 - Database	ads_analytics
 
-![img_4.png](..%2Fimages%2Fimg_4.png)
+![img_4.png](images%2Fimg_4.png)
+
+## 👨‍💻 Author
+Diu Nguyen  
+Data Engineer | Full Stack Developer  
+📧 nguyenhuongdiu1710@gmail.com
+
