@@ -1,23 +1,21 @@
-# 📘 Job Ads Analytics – Incremental ETL Pipeline
-
+# 📘  Ad-Tracking Data Pipeline for a Recruitment Start-up
 ## Project Overview
+This project simulates a complete end-to-end Incremental Data Pipeline for a recruitment start-up.
+Instead of collecting real website traffic, the system generates continuous ad-tracking and user-interaction events that behave like production logs from a live hiring platform.
 
-This project implements a full end-to-end Incremental Data Pipeline for processing Job Ads event data.
-It simulates a production-style big data architecture where:
+The pipeline is designed to mimic how modern recruitment platforms track job performance across multiple advertising channels. Events are streamed into Cassandra, processed incrementally by an Airflow-orchestrated PySpark ETL, aggregated into analytical tables in MySQL, and visualized in Grafana.
 
-Raw events are inserted into Cassandra continuously
+The goal of the project is to recreate a realistic environment where:
 
-Airflow triggers an Incremental PySpark ETL job that:
+Data arrives continuously in high volume
 
-- Reads only new data since the last run using last_ts.json
+Each ETL run only processes new events using a last_processed_ts checkpoint
 
-- Applies aggregations and business metrics
+Metrics such as CTR, CPC, CPA, ROI, publisher quality, industry performance, and time-based patterns are computed automatically
 
-- Loads analytical tables into MySQL with upsert
+Dashboards update as new data flows through the pipeline
 
-Grafana visualizes CTR, CPC, campaign performance, publishers, industries, and patterns by hour/week
-
-This pipeline behaves similarly to real-world ad tracking systems (e.g., Google Ads / Meta Ads logs processing).
+Even though the dataset is fully simulated, the behavior of the pipeline mirrors real-world ad-tracking infrastructure used by tech and recruitment companies.
 ## Data Flow Diagram
 
 ![img.png](..%2Fimages%2Fimg.png)
