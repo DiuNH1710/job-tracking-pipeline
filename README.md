@@ -110,6 +110,8 @@ This script inserts realistic event logs with fields such as impressions, clicks
 
 ![img_1.png](..%2Fimages%2Fimg_1.png)
 
+#### tracking table in Cassandra
+![img_6.png](images%2Fimg_6.png)
 
 ### 🗃️ Initialize MySQL Analytics Schema
 #### Enter MySQL
@@ -249,6 +251,8 @@ def transform_data(df):
         "daily_stats": daily_stats
     }
 ```
+#### event table in Mysql
+![img_5.png](images%2Fimg_5.png)
 
 #### Transforms include:
 
@@ -263,12 +267,13 @@ def transform_data(df):
 #### Aggregations for:
 
 - Campaign summaries
+![img_7.png](images%2Fimg_7.png)
 
 - Publisher summaries
+![img_8.png](images%2Fimg_8.png)
 
-- Industry analytics
-
-- Hourly & daily heatmaps
+- Industry summaries
+![img_9.png](images%2Fimg_9.png)
 
 
 ## 📊 Grafana Dashboards
