@@ -1,21 +1,21 @@
-# 📘  Ad-Tracking Data Pipeline for a Recruitment Start-up
+# 📘  Synthetic Ad-Tracking Data Pipeline (Near Real-Time Incremental ETL)
 ## Project Overview
-This project simulates a complete end-to-end Incremental Data Pipeline for a recruitment start-up.
-Instead of collecting real website traffic, the system generates continuous ad-tracking and user-interaction events that behave like production logs from a live hiring platform.
+This project showcases a complete near real-time Incremental Ad-Tracking Data Pipeline powered by synthetic data.
+Instead of consuming real advertising logs, a Python generator continuously simulates realistic ad-tracking events, including impressions, clicks, applies, cost, bid values, device types, and publisher/job metadata.
 
-The pipeline is designed to mimic how modern recruitment platforms track job performance across multiple advertising channels. Events are streamed into Cassandra, processed incrementally by an Airflow-orchestrated PySpark ETL, aggregated into analytical tables in MySQL, and visualized in Grafana.
+The project mirrors the behavior of a modern advertising analytics system where:
 
-The goal of the project is to recreate a realistic environment where:
+- Data arrives continuously from a synthetic event generator
 
-Data arrives continuously in high volume
+- Airflow orchestrates PySpark jobs that run on schedule (near real-time batch processing)
 
-Each ETL run only processes new events using a last_processed_ts checkpoint
+- Only new data is processed using a last_processed_ts incremental checkpoint
 
-Metrics such as CTR, CPC, CPA, ROI, publisher quality, industry performance, and time-based patterns are computed automatically
+- Performance metrics—CTR, CPC, CPA, ROI, publisher quality, industry insights, hourly/day-of-week trends—are computed automatically
 
-Dashboards update as new data flows through the pipeline
+- Dashboards in Grafana update shortly after each batch run
 
-Even though the dataset is fully simulated, the behavior of the pipeline mirrors real-world ad-tracking infrastructure used by tech and recruitment companies.
+Although all events are artificially generated, the pipeline architecture behaves like a real-world ad analytics system operating in a near real-time environment.
 ## Data Flow Diagram
 
 ![img.png](..%2Fimages%2Fimg.png)
